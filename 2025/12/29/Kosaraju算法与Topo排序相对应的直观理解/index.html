@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/IMG_7792.JPG">
 <meta property="article:published_time" content="2025-12-29T09:37:41.000Z">
-<meta property="article:modified_time" content="2025-12-29T10:31:29.582Z">
+<meta property="article:modified_time" content="2026-04-20T09:07:54.927Z">
 <meta property="article:author" content="mRNA">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -330,6 +330,7 @@
 <h2 id="反向图与正向图间的拓扑镜像"><a href="#反向图与正向图间的拓扑镜像" class="headerlink" title="反向图与正向图间的拓扑镜像"></a>反向图与正向图间的拓扑镜像</h2><p>考虑反向图中的“最上游分量中的一个点”，这个点所在的SCC之所以被称为最上游分量，是因为<strong>其在反向图中能够通过某个点伸出的单向边访问到另外一个SCC，不会有其他SCC能访问到它，那么在正向图中，这个SCC对应就不能访问到任何其他SCC。</strong> 那么在正向图中，对这个SCC中的点进行DFS，就可以得到一个SCC。而这个需要的点也已经在L’中天然给出。至此，可以说明Kosaraju算法的正确性。<br>从直观上来考虑，反向图中得到的最上游分量也就是“源点(Source)”，在正向图中的镜像就是“汇点(Sink)”，汇点只能在自己的SCC中流动，不可能泄露到其他SCC中，在取出一个汇点后，又会产生新的汇点，这样便可以得到所有的SCC。</p>
 <h2 id="题外话：对于SCC的一种理解"><a href="#题外话：对于SCC的一种理解" class="headerlink" title="题外话：对于SCC的一种理解"></a>题外话：对于SCC的一种理解</h2><p>SCC非常类似面向对象程序设计中的封装，而有向边就是对这个封装的访问，封装内部的信息可以互相知悉，而信息的传递则是根据规则在有向边中进行传递。对于题目来说，如果有一些信息非常依赖环，那么可以考虑先求SCC。</p>
 <h2 id="题外话：图方向与信息传递，DFS与递归"><a href="#题外话：图方向与信息传递，DFS与递归" class="headerlink" title="题外话：图方向与信息传递，DFS与递归"></a>题外话：图方向与信息传递，DFS与递归</h2><p>DFS与递归有着紧密的关系，其实现就是个递归过程。同时从信息传递的角度去理解，DFS天生自带的回溯过程就是总结后继中的信息，然后不断向上更新；其向上更新的过程，需要遵守信息依赖所产生的规则。正向图中信息的传递是从前驱不断向后广播，而反向图中的信息传递是从后驱不断向前更新。一个DFS正向向后的过程传递可达性，回溯向前的过程传递子孙中的信息，而回溯需要等正向结束后才进行，因此，如果某些题目直观的思路非常依赖回溯的过程传递子孙信息，那么可以考虑构建反向图，通过反向图中仅需要广播或许就可以完成。</p>
+<hr>
 
                 
               </div>
